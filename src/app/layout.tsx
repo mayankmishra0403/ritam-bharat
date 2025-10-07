@@ -14,6 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
       <body className="bg-sandstone text-gray-800 font-sans antialiased">
         {children}
         <SpeedInsightsWrapper />
