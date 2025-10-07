@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 type Props = {
   videoId: string;
@@ -25,7 +26,7 @@ export default function VideoEmbed({ videoId, title = 'Video', className = '', s
           className="relative w-full h-full focus:outline-none"
           onClick={() => setPlaying(true)}
         >
-          <img src={thumb} alt={title} className="w-full h-full object-cover" />
+          <Image src={thumb} alt={title} className="w-full h-full object-cover" fill sizes="(max-width: 768px) 100vw, 50vw" />
           <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
             <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
               <Play className="w-8 h-8 text-indigo-900" />

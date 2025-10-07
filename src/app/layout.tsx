@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import SpeedInsightsWrapper from '@/components/SpeedInsightsWrapper';
 
 export const metadata: Metadata = {
   title: 'Ritam Bharat - Bringing Order to Ambition',
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-sandstone text-gray-800 font-sans antialiased">
         {children}
+        <SpeedInsightsWrapper />
       </body>
     </html>
   )
