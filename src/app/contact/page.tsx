@@ -146,7 +146,7 @@ const ContactPage = () => {
                 variants={fadeInUp}
               >
                 <h3 className="font-serif text-xl font-bold text-indigo-900 mb-4">
-                  💡 Quick Tip
+                  💡 Customer Consultation
                 </h3>
                 <p className="text-gray-700">
                   Not sure if Ritam is right for your business? Book a free 15-minute consultation 
