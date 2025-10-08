@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^11.3.21",
     "lucide-react": "^0.545.0",
@@ -16,6 +17,7 @@
     "node-appwrite": "^20.1.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.64.0",
     "sharp": "^0.34.4",
     "zod": "^4.1.12"
   },
