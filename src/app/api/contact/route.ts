@@ -6,6 +6,7 @@ import { z } from 'zod';
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters long." }),
   email: z.string().email({ message: "Invalid email address." }),
+  phone: z.string().min(10, { message: "Phone number must be at least 10 characters long." }).regex(/^[\+]?[0-9\s\-\(\)]+$/, { message: "Invalid phone number format." }),
   message: z.string().min(10, { message: "Message must be at least 10 characters long." }),
 });
 
@@ -79,12 +80,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, message } = validationResult.data;
+    const { name, email, phone, message } = validationResult.data;
 
     // Create document data with additional fields
     const documentData = {
       name: name.trim(),
       email: email.toLowerCase().trim(),
+      phone: phone.trim(),
       message: message.trim(),
       status: 'new',
       createdAt: new Date().toISOString(),

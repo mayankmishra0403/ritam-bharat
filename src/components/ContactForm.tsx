@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 interface ContactFormData {
   name: string;
   email: string;
+  phone: string;
   message: string;
 }
 
@@ -20,6 +21,7 @@ const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    phone: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,6 +57,7 @@ const ContactForm: React.FC = () => {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           message: ''
         });
       }
@@ -111,6 +114,22 @@ const ContactForm: React.FC = () => {
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               placeholder="your.email@example.com"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder="+91 98765 43210"
             />
           </div>
 
