@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Phone, MapPin, Calendar } from 'lucide-react';
+import { Mail, Phone, MapPin, Calendar } from 'lucide-react';
 import Header from '@/components/Header';
+import ContactForm from '@/components/ContactForm';
 
 // Animation variants  
 const fadeInUp = {
@@ -50,105 +51,7 @@ const ContactPage = () => {
               animate="visible"
               variants={fadeInUp}
             >
-              <h2 className="font-serif text-3xl font-bold text-indigo-900 mb-6">
-                Request a Demo
-              </h2>
-              <p className="text-gray-600 mb-8">
-                Fill out the form below and we&apos;ll get back to you within 24 hours to schedule your personalized demo.
-              </p>
-              
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name *
-                    </label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input 
-                      type="text" 
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                      placeholder="Your last name"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Email *
-                  </label>
-                  <input 
-                    type="email" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                    placeholder="your@business.com"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input 
-                    type="tel" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                    placeholder="+91 98765 43210"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Name *
-                  </label>
-                  <input 
-                    type="text" 
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                    placeholder="Your hotel/business name"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Type
-                  </label>
-                  <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent">
-                    <option>Select your business type</option>
-                    <option>Hotel/Resort</option>
-                    <option>Guest House</option>
-                    <option>Restaurant</option>
-                    <option>Other Hospitality</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Tell us about your needs
-                  </label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-600 focus:border-transparent"
-                    placeholder="What challenges are you facing? What features are most important to you?"
-                  ></textarea>
-                </div>
-                
-                <motion.button 
-                  type="submit"
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Request Demo
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </form>
+              <ContactForm />
             </motion.div>
 
             {/* Contact Information */}
