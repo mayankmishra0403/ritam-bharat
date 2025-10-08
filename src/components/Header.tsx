@@ -6,7 +6,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Static import of logo file located at project root
-import logo from '../../logo-bg.png';
+import logo from '../../logo.png';
 
 const Header: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
