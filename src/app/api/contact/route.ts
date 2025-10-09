@@ -7,6 +7,7 @@ const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters long." }),
   email: z.string().email({ message: "Invalid email address." }),
   phone: z.string().min(10, { message: "Phone number must be at least 10 characters long." }).regex(/^[\+]?[0-9\s\-\(\)]+$/, { message: "Invalid phone number format." }),
+  hotel: z.string().max(120, { message: 'Hotel name must be 120 characters or fewer.' }).optional(),
   message: z.string().min(10, { message: "Message must be at least 10 characters long." }),
 });
 
@@ -80,7 +81,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, phone, message } = validationResult.data;
+  const { name, email, phone, hotel, message } = validationResult.data;
 
     // Create document data with additional fields
     const documentData = {
@@ -88,6 +89,7 @@ export async function POST(request: NextRequest) {
       email: email.toLowerCase().trim(),
       phone: phone.trim(),
       message: message.trim(),
+  hotel: hotel?.trim() || null,
       status: 'new',
       createdAt: new Date().toISOString(),
       ipAddress: request.headers.get('x-forwarded-for') || 

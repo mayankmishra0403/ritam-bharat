@@ -7,6 +7,7 @@ interface ContactFormData {
   name: string;
   email: string;
   phone: string;
+  hotel?: string;
   message: string;
 }
 
@@ -22,6 +23,7 @@ const ContactForm: React.FC = () => {
     name: '',
     email: '',
     phone: '',
+  hotel: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,6 +60,7 @@ const ContactForm: React.FC = () => {
           name: '',
           email: '',
           phone: '',
+          hotel: '',
           message: ''
         });
       }
@@ -130,6 +133,21 @@ const ContactForm: React.FC = () => {
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
               placeholder="+91 98765 43210"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="hotel" className="block text-sm font-medium text-gray-700 mb-2">
+              Hotel / Property Name
+            </label>
+            <input
+              type="text"
+              id="hotel"
+              name="hotel"
+              value={formData.hotel}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+              placeholder="Optional"
             />
           </div>
 
