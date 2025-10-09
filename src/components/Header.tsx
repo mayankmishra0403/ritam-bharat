@@ -38,6 +38,7 @@ const Header: React.FC = () => {
             <Link href="/philosophy" className="text-gray-700 hover:text-indigo-900 transition-colors">Philosophy</Link>
             <Link href="/products" className="text-gray-700 hover:text-indigo-900 transition-colors">Products</Link>
             <Link href="/technology" className="text-gray-700 hover:text-indigo-900 transition-colors">Technology</Link>
+            <Link href="/blog" className="text-gray-700 hover:text-indigo-900 transition-colors">Blog</Link>
             <Link href="/contact" className="text-gray-700 hover:text-indigo-900 transition-colors">Contact</Link>
             <motion.button
               className="bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
@@ -93,6 +94,13 @@ const Header: React.FC = () => {
               className="text-gray-800 hover:text-indigo-900 font-medium py-2 border-b border-gray-100 transition-colors"
             >
               Technology
+            </Link>
+            <Link 
+              href="/blog" 
+              onClick={() => setOpen(false)} 
+              className="text-gray-800 hover:text-indigo-900 font-medium py-2 border-b border-gray-100 transition-colors"
+            >
+              Blog
             </Link>
             <Link 
               href="/contact" 
