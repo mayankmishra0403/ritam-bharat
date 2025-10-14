@@ -1,28 +1,43 @@
-name: CI
+# GitHub Actions Workflow ka naam
+name: Ritam Bharat - Quality Check
 
+# Yeh workflow kab chalega?
 on:
+  # Jab bhi 'main' ya 'master' branch par code push ho
   push:
-    branches: [ main ]
+    branches: [ "main", "master" ]
+  # Jab bhi 'main' ya 'master' branch ke liye koi pull request bane
   pull_request:
-    branches: [ main ]
+    branches: [ "main", "master" ]
 
+# Is workflow mein kya-kya kaam honge?
 jobs:
-  build:
+  # Pehla kaam: Quality & Build Check
+  quality-and-build:
+    # Yeh kaam kaunsi machine par chalega?
     runs-on: ubuntu-latest
 
+    # Kaam ke steps kya hain?
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      # Step 1: Aapka code is machine par download karo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Node.js (JavaScript ka engine) install karo
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20' # Next.js 14+ ke liye Node.js v18 ya usse upar zaroori hai
+          cache: 'npm'
+
+      # Step 3: Saari zaroori libraries install karo (jaise Next.js, React)
       - name: Install dependencies
-        run: npm ci
-      - name: Build
+        run: npm install
+
+      # Step 4: Code ki quality check karo (Linting)
+      - name: Run Lint Check
+        run: npm run lint
+
+      # Step 5: Website ko build karke check karo ki koi error toh nahi hai
+      - name: Run Build Check
         run: npm run build
-      - name: Upload build artifacts
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: next-build
-          path: .next
