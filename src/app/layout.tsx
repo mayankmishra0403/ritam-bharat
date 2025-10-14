@@ -1,67 +1,42 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import SpeedInsightsWrapper from '@/components/SpeedInsightsWrapper';
+// Is file ka maqsad hai aapki main website ke har page par ek jaisa structure (jaise header, footer) aur zaroori scripts (jaise analytics) ko lagana.
 
+// Hum zaroori cheezein import kar rahe hain.
+import { ClarityScript } from '@/components/analytics/ClarityScript'; // Humara naya "CCTV camera" component
+import { Suspense } from 'react'; // Yeh Next.js ka ek tool hai jo client components ko aaram se load karne mein madad karta hai
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../globals.css"; // Aapki global CSS file
+
+const inter = Inter({ subsets: ["latin"] });
+
+// Website ka metadata (jo Google search mein dikhta hai)
 export const metadata: Metadata = {
-  title: 'Ritam Bharat - Bringing Order to Ambition',
-  description: 'We build elegant software systems for India\'s small and medium businesses, turning their daily chaos into clarity and growth.',
-}
+  title: "Ritam Bharat - Bringing Order to Ambition",
+  description: "Simple, powerful software for India's small and medium businesses. System Sahi. Sab Sahi.",
+};
 
+// Yeh aapka main layout component hai
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
+      {/* HEAD SECTION: Yahan par hum zaroori scripts rakhte hain.
+        Suspense component ke andar ClarityScript daalne se website ki performance achhi rehti hai.
+      */}
       <head>
-        <link rel="icon" href="/favicon.png" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6231830445101258" crossOrigin="anonymous"></script>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Ritam Bharat Software",
-          "url": "https://www.ritambharat.software",
-          "logo": "https://www.ritambharat.software/logo.png",
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "email": "contact@ritambharat.software",
-            "contactType": "Customer Service"
-          },
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kanpur",
-            "addressRegion": "Uttar Pradesh",
-            "addressCountry": "IN"
-          },
-          "potentialAction": {
-            "@type": "ReserveAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://www.ritambharat.software",
-              "inLanguage": "en-US",
-              "actionPlatform": [
-                "http://schema.org/DesktopWebPlatform",
-                "http://schema.org/IOSPlatform",
-                "http://schema.org/AndroidPlatform"
-              ]
-            },
-            "name": "Request a Demo"
-          },
-          "sameAs": [
-            "https://www.youtube.com/@Ritambharat",
-            "https://www.linkedin.com/company/ritam-bharat/",
-            "https://x.com/Ritam_bharat",
-            "https://www.instagram.com/ritam_bharat/"
-          ]
-        }) }} />
+        <Suspense>
+          <ClarityScript />
+        </Suspense>
       </head>
-      <body className="bg-sandstone text-gray-800 font-sans antialiased">
+      
+      {/* BODY SECTION: Yahan par aapki website ka content (pages) dikhta hai */}
+      <body className={inter.className}>
         {children}
-        <SpeedInsightsWrapper />
       </body>
     </html>
-  )
+  );
 }
+
